@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang ="en-us">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Coding Quiz</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css" />
+      </head>
+
+    <body>
+          
+    <div class="container">
+        <nav class="navbar">
+            <li class="nav-item text-left">
+                <a href="#">High Scores</a>
+            </li>
+            <li class="nav-item text-right">
+                Timer:
+                <span id="timer">0</span>
+            </li>
+        </nav>
+    </div>
+
+    <div class="wrapper text-center">
+        <header>
+            <h1>Coding Quiz</h1>
+            </header>
+            <div class="card">
+            </div>
+            <div class="card-body">
+                <p id="header"> You have 75 seconds to complete this asessment. Every
+                    incorrect answer will cost you time.
+                <br>
+                </p>
+                <button id="start-button" class="btn">Start</button>
+                    <div id="start-game" style="visibility: hidden">
+                        <button id="option0"  data-index="0"></button><br>
+                        <button id="option1"  data-index="1"></button><br>
+                        <button id="option2"  data-index="2"></button><br>
+                        <button id="option3"  data-index="3"></button><br>
+                    </div>
+            </div>
+            
+    </div>
+
+        <script src="./script.js"></script>
+    </body>
+    </html>
