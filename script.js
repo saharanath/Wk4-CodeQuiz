@@ -10,7 +10,6 @@ var buttonEl = document.getElementById("start-game");
 var elements = document.getElementsByClassName("clickOption");
 var totalTime = 75;
 var questionNum = 0;
-var selectedAnswers = [];
 
 var questions =["The condition in an if/else statement is enclosed with in _______",
                 "Arrays in JavaScript can be used to store ______",
@@ -25,37 +24,39 @@ var answers =[question1= ["Quotes","Curly brackets","Parentheses","Square bracke
             
 var correctAnswers = [2,3,2,2];
 
-start.addEventListener("click", function(){
-    timer();
-    displayQuestion(questionNum);
-    start.style.visibility = "hidden";
-    buttonEl.style.visibility = "visible";
-});
-
 var clickOption = function(){
-    if(questionNum >= questions.length){
-        console.log(selectedAnswers);
-        return;
-    }
 
     var selectedOption = parseInt(this.getAttribute("data-index"));
-    selectedAnswers.push(selectedOption);
-    questionNum += 1;
 
+    if (selectedOption === correctAnswers[questionNum]){
+        alert("correct"); 
+    }
+    
+    else{
+        totalTime -= 5;
+    }
+    
+    questionNum += 1;
+    
     if(questionNum >= questions.length){
-        console.log(selectedAnswers);
+    
         return;
     }
 
     questionEl.textContent = questions[questionNum];
     displayQuestion(questionNum);
-
 }
 
 for(var i = 0; i < elements.length; i++){
     elements[i].addEventListener("click", clickOption);
 }
 
+start.addEventListener("click", function(){
+    timer();
+    displayQuestion(questionNum);
+    start.style.visibility = "hidden";
+    buttonEl.style.visibility = "visible";
+});
 
 function timer(){
     
@@ -67,24 +68,15 @@ function timer(){
         clearInterval(timerInterval);
         endQuiz();
         return;
-
-    }
+        }
     }, 1000);
 }
 
-
-
-
-
 function displayQuestion(index){
-
     questionEl.textContent=(questions[index]);
     option0.textContent=(answers[index][0]);
     option1.textContent=(answers[index][1]);
     option2.textContent=(answers[index][2]);
     option3.textContent=(answers[index][3]);
-    
-    
-
 }
 
