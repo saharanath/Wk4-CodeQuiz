@@ -6,72 +6,85 @@ var option1 = document.getElementById("option1");
 var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var intials = document.getElementById("user-initials");
-
+var buttonEl = document.getElementById("start-game");
+var elements = document.getElementsByClassName("clickOption");
 var totalTime = 75;
-var elapsedTime = 0;
 var questionNum = 0;
+var selectedAnswers = [];
+
 var questions =["The condition in an if/else statement is enclosed with in _______",
                 "Arrays in JavaScript can be used to store ______",
                 "Commonly used data types do not include ______",
                 "String values must be enclosed within _____ when being assigned to variables"];
 
 var answers =[question1= ["Quotes","Curly brackets","Parentheses","Square brackets"],
-             question2= ["Numbers and strings","Other arrays","Booleans","All of the above"],
-             question3= ["Strings","Booleans","Alerts","Numbers"],
-             question4= ["Commas","Curly brackets","quotes","parentheses"]
+              question2= ["Numbers and strings","Other arrays","Booleans","All of the above"],
+              question3= ["Strings","Booleans","Alerts","Numbers"],
+              question4= ["Commas","Curly brackets","quotes","parentheses"],
             ];             
             
 var correctAnswers = [2,3,2,2];
 
 start.addEventListener("click", function(){
-    setTime();
-    newQuiz();
+    timer();
+    displayQuestion(questionNum);
     start.style.visibility = "hidden";
+    buttonEl.style.visibility = "visible";
 });
 
+var clickOption = function(){
+    if(questionNum >= questions.length){
+        console.log(selectedAnswers);
+        return;
+    }
+
+    var selectedOption = parseInt(this.getAttribute("data-index"));
+    selectedAnswers.push(selectedOption);
+    questionNum += 1;
+
+    if(questionNum >= questions.length){
+        console.log(selectedAnswers);
+        return;
+    }
+
+    questionEl.textContent = questions[questionNum];
+    displayQuestion(questionNum);
+
+}
+
+for(var i = 0; i < elements.length; i++){
+    elements[i].addEventListener("click", clickOption);
+}
 
 
-function setTime(){
+function timer(){
     
     var timerInterval = setInterval(function(){
-        totalTime--;
+        totalTime --;
         timerEl.textContent = totalTime;
-
+ 
         if(totalTime === 0){
         clearInterval(timerInterval);
         endQuiz();
         return;
-        }
-    }, 1000)
-}
 
-function newQuiz(){
-    questionEl.textContent = (questions[0]);
-
-
-};
-
-
-function decreaseTimer (){
-    timerEl.text(totalTime);
-    while(elapsedTime < 75){
-        elapesedTime += 1;
     }
-    endQuiz();
-    totalTime = totalTime - elapsedTime;
-    timerEl.textContent = totalTime;
-
+    }, 1000);
 }
 
 
-for( var i = 0; i < questions.length ; i++){
 
-    questionEl.text(questions[i]);
-    option0.text(answers[i][0]);
-    option1.text(answers[i][1]);
-    option2.text(answers[i][2]);
-    option3.text(answers[i][3]);
+
+
+function displayQuestion(index){
+
+    questionEl.textContent=(questions[index]);
+    option0.textContent=(answers[index][0]);
+    option1.textContent=(answers[index][1]);
+    option2.textContent=(answers[index][2]);
+    option3.textContent=(answers[index][3]);
+    
+    
 
 }
-
 
