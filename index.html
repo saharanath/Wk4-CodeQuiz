@@ -7,15 +7,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Coding Quiz</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="assets\style.css" />
       </head>
 
     <body>
-          
+
+    <!--Nav bar and timer-->
     <div class="container">
         <nav class="navbar">
             <li class="nav-item text-left">
-                <a href="#">High Scores</a>
+                <a href="#"></a>
             </li>
             <li class="nav-item text-right">
                 Timer:
@@ -27,7 +28,7 @@
     <div class="wrapper text-center">
         <header>
             <h1>Coding Quiz</h1>
-            </header>
+        </header>
             <div class="card">
             </div>
             <div class="card-body">
@@ -40,12 +41,21 @@
                     <button id="option0" class="clickOption" data-index="0"></button><br>
                     <button id="option1" class="clickOption" data-index="1"></button><br>
                     <button id="option2" class="clickOption" data-index="2"></button><br>
-                    <button id="option3" class="clickOption" data-index="3"></button><br>
+                    <button id="option3" class="clickOption"data-index="3"></button><br>
                 </div>
+            </div>
+            <!--HighScores-->
+            <div class="container" id="intial-form">
+                <form class ="highscore" id ="highscore">
+                    <label for="initials">Initial:</label><br>
+                    <input type="text" id="intials" name="intial"><br>
+                    <button id="submit">Submit</button>
+               </form>
+
             </div>
             
           </div>
 
-        <script src="./script.js"></script>
+        <script src="assets/script.js"></script>
     </body>
     </html>
